@@ -43,10 +43,20 @@ graph TD;
 
   User --> manage-chats[Management of Chats]
   manage-chats --> terminate-contact[remove user contact in chat room]
+  
+  manage-chats --> reconnect[User regains connection to chat room]
 
-  terminate-contact --> single-user
-  terminate-contact --> group-message
+  reconnect --> |If user has previously terminated contact| single-user-2[single user chat]
+  reconnect --> |If user has previously terminated contact| group-message-2[multiple user chat room]
 
-  User --> logout[User Log out of Application]
+  single-user-2 --> reconnect-done[establish connection with chat - allow user to send messages and receive new messages]
+  group-message-2 --> reconnect-done
+
+  terminate-contact --> single-user-3[single user chat]
+  terminate-contact --> group-message-3[multiple user chat room]
+
+  User --> logout[User Log out of 
+  
+  Application]
 
 :::
